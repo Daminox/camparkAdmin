@@ -5,15 +5,13 @@
  */
 package fr.miage.orleans.servlet;
 
-import fr.miage.orleans.modele.entities.Camera;
 import fr.miage.orleans.modele.services.FacadeBean;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletCreation extends HttpServlet {
 
-    @EJB
+    @Autowired
     private FacadeBean facade;
 
     /**
@@ -39,10 +37,10 @@ public class ServletCreation extends HttpServlet {
         String paramNomCamera = request.getParameter("nomCamera");
         String paramInputFolder = request.getParameter("inputFolder");
         paramInputFolder = "C:/Users/Damien/Desktop/raw/11_18.JPG";
-        Camera m = facade.creerCamera(paramNomCamera, "C:/Users/Damien/Desktop/raw/11_18.JPG", "C:\\Users\\Damien\\Desktop\\raw\\11_18.JPG");
+        //Camera m = facade.creerCamera(paramNomCamera, "C:/Users/Damien/Desktop/raw/11_18.JPG", "C:\\Users\\Damien\\Desktop\\raw\\11_18.JPG");
 
-        request.setAttribute("idCamera", m.getId());
-        request.setAttribute("nomCamera", m.getNomCamera());
+        //request.setAttribute("idCamera", m.getId());
+        //request.setAttribute("nomCamera", m.getNomCamera());
         request.setAttribute("pathImage", paramInputFolder);
 
         request.getServletContext().getRequestDispatcher("/WEB-INF/creation/page2.jsp").forward(request, response);
