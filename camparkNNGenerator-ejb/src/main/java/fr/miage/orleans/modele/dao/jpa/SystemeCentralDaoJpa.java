@@ -4,11 +4,13 @@ package fr.miage.orleans.modele.dao.jpa;
 import fr.miage.orleans.modele.dao.SystemeCentralDao;
 import fr.miage.orleans.modele.entities.SystemeCentral;
 import javax.persistence.Query;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Steve Cancès <steve.cances@gmail.com>
  */
+@Repository
 public class SystemeCentralDaoJpa extends AbstractDaoJpa<SystemeCentral> implements SystemeCentralDao {
 
     public SystemeCentralDaoJpa() {
