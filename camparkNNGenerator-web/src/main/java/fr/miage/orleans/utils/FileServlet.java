@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package fr.miage.orleans.servlet;
+package fr.miage.orleans.utils;
 
 import java.io.Closeable;
 import java.io.File;
