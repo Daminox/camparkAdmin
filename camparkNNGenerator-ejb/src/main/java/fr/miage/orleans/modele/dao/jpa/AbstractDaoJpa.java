@@ -10,8 +10,13 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 
+ * @author Steve Cancès <steve.cances@gmail.com>
+ * @param <T> L'entity gérée par la dao
+ */
 @Transactional
-public class AbstractDaoJpa<T> implements AbstractDao<T> {
+public abstract class AbstractDaoJpa<T> implements AbstractDao<T> {
 
     /**
      * Entity Manager used to talk with the database

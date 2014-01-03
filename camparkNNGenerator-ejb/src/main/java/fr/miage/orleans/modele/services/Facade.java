@@ -23,7 +23,7 @@ public interface Facade {
     
     public CoordonneeGPS creerCoordonneeGPS(double lattitude, double longittude);
     
-    public PlaceCamera creerPlaceCamera(int idCamera, int numero, int idCoordonneeImage, int idCoordonneeGPS);
+    public PlaceCamera creerPlaceCamera(long idCamera, int numero, long idCoordonneeImage, long idCoordonneeGPS);
     
     public ImageCamera utiliserPourEntrainement(int idPlaceCamera, int idImageCameraTrain, boolean isOccupee);
     

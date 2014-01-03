@@ -1,6 +1,7 @@
 package fr.miage.orleans.modele.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,6 +36,11 @@ public class Camera implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<ImageCamera> imagesCamera;
+    
+    public Camera() {
+	this.imagesCamera = new ArrayList<>();
+	this.placesCamera = new ArrayList<>();
+    }
 
     public Long getId() {
 	return id;

@@ -25,7 +25,7 @@ public class SystemeCentralDaoJpa extends AbstractDaoJpa<SystemeCentral> impleme
     public SystemeCentral findSelectionne() {
 	SystemeCentral systemeCentral = null;
 	Query query = this.entityManager.createQuery("From SystemeCentral s where s.selectionne=:selectionne");
-	query.setParameter("selectionne", 1);
+	query.setParameter("selectionne", true);
 	try {
 	    systemeCentral = (SystemeCentral) query.getSingleResult();
 	} catch (Exception ex) {
