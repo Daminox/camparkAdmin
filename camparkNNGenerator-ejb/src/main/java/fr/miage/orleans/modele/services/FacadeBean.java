@@ -102,37 +102,57 @@ public class FacadeBean implements FacadeLocal {
 
     @Override
     public TransformationImage creerTransformation(int reduction, boolean isNoirEtBlanc) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Camera affecterTransformation(int idCamera, int idTransformationImage) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public ImageCamera utiliserPourEntrainement(int idPlaceCamera, int idImageCameraTrain, boolean isOccupee) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public PlaceCamera lancerEntrainement(int idPlaceCamera) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public ImageCamera ajouterImage(byte[] imageByte, int idCamera) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean isCameraPretePourEntrainement(int idCamera) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Camera camera = this.cameraDao.find(idCamera);
+        if (camera != null && !camera.getPlacesCamera().isEmpty() && camera.getTransformationImage() != null) {
+            for (PlaceCamera placeCamera : camera.getPlacesCamera()) {
+                if (placeCamera.getCoordonneeGPS() == null || placeCamera.getCoordonneeImage() == null || placeCamera.getImagesTrain() == null || placeCamera.getImagesTrain().isEmpty()) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public boolean isCameraPretePourUtilisation(int idCamera) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Camera camera = this.cameraDao.find(idCamera);
+        if (camera != null && !camera.getPlacesCamera().isEmpty() && camera.getTransformationImage() != null) {
+            for (PlaceCamera placeCamera : camera.getPlacesCamera()) {
+                if (placeCamera.getNNet() == null || placeCamera.getNNet().isEmpty()) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
